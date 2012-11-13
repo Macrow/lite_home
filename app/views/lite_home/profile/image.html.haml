@@ -1,0 +1,25 @@
+#lite_home
+  = title "#{LiteHome::site_name} - #{@user.name}"
+  = display_flash  
+  = display_breadcrumb
+  .row
+    .span12.white
+      .span2.sidebar= render 'sidebar'
+      .span9.user
+        .well
+          .right= display_user_image(@user)
+          .name= @user.name
+          %table.table
+            %tbody
+              %tr
+                %td{width: '15%'} Name:
+                %td= @user.name
+              %tr
+                %td Email:
+                %td= @user.email
+              %tr
+                %td Last Login:
+                %td= @user.last_login_at
+              %tr
+                %td Last Logout:
+                %td= @user.last_logout_at                

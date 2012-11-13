@@ -1,0 +1,87 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ */
+
+@import "bootstrap";
+@import 'compass/css3';
+@import 'compass/utilities';
+ 
+body {
+  padding-top: 60px;
+  background-image: url('<%= asset_path('lite_home/shattered.png') %>');
+}
+
+#lite_home {
+  margin-bottom: 5px;
+  .white {
+    background: white;
+  }
+  .user_image {
+    text-align: center;
+    height: 360px;
+    line-height: 360px;
+  }
+  .sidebar {
+    margin: 20px;
+  }
+  .user {
+    margin: 20px 0;
+    .name {
+      font-size: 1.5em;
+      font-weight: bold;
+    }
+    .float_right {
+      @include float-right;
+    }
+    .right {
+      text-align: right;
+    }
+    .avatar img {
+      vertical-align: top;
+    }
+  }
+  .user_show {
+    padding: 20px;
+    .float_right {
+      @include float-right;
+    }
+    .name {
+      font-size: 1.5em;
+      font-weight: bold;
+    }
+    .right {
+      text-align: right;
+    }
+  }
+  a {
+    &:hover { 
+      text-decoration: none;
+    }
+  }
+  .breadcrumb {
+    i {
+      margin-right: 3px;
+    }
+  }
+  .pagination {
+    ul {
+      @include float-right;
+      background: white;      
+    }
+  }
+  .highlight {
+    background-color: yellow;
+  }
+}
+
+@import "bootstrap-responsive";

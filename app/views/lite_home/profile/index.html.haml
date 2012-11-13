@@ -1,0 +1,20 @@
+#lite_home
+  = title t('lite_home.actions.my_info')
+  = display_flash  
+  = display_breadcrumb
+  .row
+    .span12.white
+      .span2.sidebar= render 'sidebar'
+      .span9.user
+        %table.table.table-bordered
+          %tbody
+            %tr
+              %td{colspan: 2}
+                .float_right= display_user_avatar(@user, 'middle')
+                .name
+                  = @user.name
+                  = display_label(t('lite_home.common.admin_label'), 'label-important') if @user.admin?
+            - %w(name email sign_in_count last_login_at sex address im telephone personal_sign).each do |attribute|
+              %tr
+                %td.right{width: '30%'}= t("activerecord.attributes.lite_home/user.#{attribute}")
+                %td= @user.try(attribute)

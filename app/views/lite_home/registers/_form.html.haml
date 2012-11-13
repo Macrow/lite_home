@@ -1,0 +1,6 @@
+= simple_form_for @user, url: :register, html: {class: 'form-horizontal'} do |f|
+  = f.input :name
+  = f.input :email
+  = f.input :password, as: :password
+  = f.input :password_confirmation, as: :password
+  .form-actions= f.submit t('lite_home.actions.register'), class: 'btn btn-primary'

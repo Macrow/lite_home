@@ -1,0 +1,11 @@
+#lite_home
+  = title "#{t('lite_home.common.online_users')}"
+  = display_flash
+  = display_breadcrumb
+  .row
+    .span12.white
+      .span4.user_image= image_tag('lite_home/user.gif')
+      .span7.user
+        %h3= t('lite_home.common.online_users')
+        - @current_users.each do |user|
+          = link_to user.name, user_show_path(user.name)

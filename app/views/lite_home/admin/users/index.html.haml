@@ -1,0 +1,40 @@
+#lite_home
+  = title t("lite_home.common.all_#{params[:admins] ? 'admins' : 'users'}")
+  = display_flash
+  .row
+    .span12.white
+      .span2.sidebar= render 'sidebar'
+      .span9.user
+        %h3= t("lite_home.common.all_#{params[:admins] ? 'admins' : 'users'}")
+        %hr
+        = search_form_for @q, url: admin_users_path, html: {class: 'form-search'} do |f|
+          .input-append
+            = hidden_field_tag :admins, params[:admins]
+            = f.text_field :name_cont, class: 'span3 search-query'
+            = f.submit t('lite_home.actions.search'), class: 'btn'
+        %table.table.table-hover
+          %thead
+            %tr
+              %th{width: '5%'} #
+              %th= sort_link(@q, :name)
+              %th= sort_link(@q, :email)
+              %th= sort_link(@q, :sign_in_count)
+              %th= sort_link(@q, :last_login_at)
+              %th= sort_link(@q, :last_sign_in_ip)
+          %tbody
+            - @users.each_with_index do |user, index|
+              %tr
+                %td= "#{index + LiteHome.users_per_page * ((params[:page].nil? ? 1 : params[:page]).to_i - 1) + 1}"
+                %td.user_name
+                  = link_to display_icon('remove'), admin_user_path(user), method: :delete, confirm: 'sure?' if user != current_user
+                  = link_to user.name, edit_admin_user_path(user)
+                  = display_label('ADMIN', 'label-important') if user.admin
+                  = link_to display_icon('share'), user_show_path(user.name), target: '_blank'
+                %td= user.email
+                %td= display_badge(user.sign_in_count)
+                %td= user.last_login_at
+                %td= user.last_sign_in_ip
+        = will_paginate(@users)
+- if params[:q]
+  :javascript
+     $(".user_name").highlight("#{h params[:q][:name_cont]}");

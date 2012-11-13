@@ -1,0 +1,8 @@
+%ul.nav.nav-list
+  %li.nav-header= t('lite_home.common.quick_links') 
+  %li= link_to t('lite_home.actions.my_info'), profile_path
+  %li= link_to t('lite_home.actions.change_my_info'), profile_edit_path
+  %li= link_to t('lite_home.actions.change_my_avatar'), profile_change_avatar_path
+  %li= link_to t('lite_home.actions.change_my_password'), profile_change_password_path
+  %li= link_to t('lite_home.actions.cancel_register'), profile_destroy_path
+  %li= link_to t('lite_home.actions.logout'), logout_path

@@ -1,0 +1,16 @@
+#lite_home
+  = title t('lite_home.actions.forgot_password')
+  = display_flash  
+  = display_breadcrumb
+  .row
+    .span12.white
+      .span4.user_image= image_tag('lite_home/user.gif')
+      .span7.user
+        %h3= t('lite_home.actions.forgot_password')
+        = form_tag forgot_password_path, method: :post, class: 'form-horizontal' do
+          .control-group
+            = label_tag t('activerecord.attributes.lite_home/user.email'), nil, class: 'control-label'
+            .controls= text_field_tag :email, params[:email]
+          .form-actions
+            = submit_tag t('lite_home.actions.reset_password'), class: 'btn btn-danger'
+            = link_to t('lite_home.actions.cancel'), login_path, class: 'btn'

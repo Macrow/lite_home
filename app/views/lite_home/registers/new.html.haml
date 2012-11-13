@@ -1,0 +1,9 @@
+#lite_home
+  = title "#{t('lite_home.actions.register')}"
+  = display_breadcrumb
+  .row
+    .span12.white
+      .span4.user_image= image_tag('lite_home/user.gif')
+      .span7.user
+        %h3= t('lite_home.actions.register')
+        = render 'form'

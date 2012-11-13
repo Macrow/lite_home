@@ -1,0 +1,5 @@
+%ul.nav.nav-list
+  %li.nav-header= t('lite_home.common.quick_links') 
+  %li= link_to t('lite_home.common.all_users'), admin_users_path
+  %li= link_to t('lite_home.common.all_admins'), admin_users_path(admins: true)
+  %li= link_to t('lite_home.common.new_user'), new_admin_user_path

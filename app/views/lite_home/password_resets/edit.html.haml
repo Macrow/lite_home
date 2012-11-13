@@ -1,0 +1,22 @@
+#lite_home
+  = title "#{LiteHome::site_name} - Reset Password"
+  = display_flash  
+  = display_breadcrumb
+  .row
+    .span12.white
+      .span4.user_image= image_tag('lite_home/user.gif')
+      .span7.user
+        %h3 Reset Password
+        = form_tag reset_password_path, method: :put, class: 'form-horizontal' do
+          .control-group
+            = label_tag :email, nil, class: 'control-label'
+            .controls= text_field_tag :email, params[:email]
+          .control-group
+            = label_tag :password, nil, class: 'control-label'
+            .controls= password_field_tag :password
+          .control-group
+            = label_tag :password_confirmation, nil, class: 'control-label'
+            .controls= password_field_tag :password_confirmation
+          .form-actions
+            = submit_tag "Reset my password!", class: 'btn btn-danger'
+            = link_to 'Back', login_path, class: 'btn'

@@ -1,0 +1,10 @@
+#lite_home
+  = title t('lite_home.common.new_user')
+  = display_flash
+  .row
+    .span12.white
+      .span2.sidebar= render 'sidebar'
+      .span9.user
+        %h3= t('lite_home.common.new_user')
+        %hr      
+        = render 'form'

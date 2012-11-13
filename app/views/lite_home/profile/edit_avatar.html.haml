@@ -1,0 +1,21 @@
+#lite_home
+  = title t('lite_home.actions.change_my_avatar')
+  = display_flash  
+  = display_breadcrumb
+  .row
+    .span12.white
+      .span2.sidebar= render 'sidebar'
+      .span9.user
+        .well
+          .name
+            = @user.name
+            = display_label(t('lite_home.common.admin_label'), 'label-important') if @user.admin?
+          %hr
+          .avatar
+            = image_tag(@user.avatar.url(:max) || 'lite_home/user.gif')
+            = image_tag(@user.avatar.url(:middle) || 'lite_home/user.gif')
+            = image_tag(@user.avatar.url(:min) || 'lite_home/user.gif')
+          %hr
+          = form_tag profile_change_avatar_path, method: :put, multipart: true, class: 'form' do
+            = file_field_tag :avatar 
+            = submit_tag t('lite_home.actions.upload'), class: 'btn btn-primary'

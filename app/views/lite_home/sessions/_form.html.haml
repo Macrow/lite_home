@@ -1,0 +1,7 @@
+= simple_form_for @user, url: login_path, html: {class: 'form-horizontal'} do |f|
+  = f.input :name
+  = f.input :password
+  = f.input :remember, as: :boolean, label: false, inline_label: t('lite_home.actions.remember_me')
+  .form-actions
+    = f.submit t('lite_home.actions.login'), class: 'btn btn-primary'
+    = link_to t('lite_home.actions.forgot_password'), forgot_password_path, class: 'btn'

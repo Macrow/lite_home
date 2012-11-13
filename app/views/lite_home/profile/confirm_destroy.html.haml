@@ -1,0 +1,19 @@
+#lite_home
+  = title t('lite_home.actions.cancel_register')
+  = display_flash  
+  = display_breadcrumb
+  .row
+    .span12.white
+      .span2.sidebar= render 'sidebar'
+      .span9.user
+        .well
+          .name
+            = @user.name
+            = display_label(t('lite_home.common.admin_label'), 'label-important') if @user.admin?
+          %hr
+          = form_tag profile_destroy_path, method: :delete, class: 'form-horizontal' do
+            = t('lite_home.msg.cancel_register_warning')
+            .form-actions
+              = submit_tag t('lite_home.actions.cancel_register_action'), class: 'btn btn-danger'
+              = link_to t('lite_home.actions.cancel'), profile_path, class: 'btn'
+                
